@@ -4,7 +4,6 @@ build/
 dist/
 doc/
 node_modules/
-package-lock.json
 Pipfile.lock
 target/
 *.log

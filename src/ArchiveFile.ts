@@ -1,8 +1,8 @@
-import { CentralDirectoryListing, decompressors } from "../zip";
-import * as assert from "./assert";
-import { crc32 } from "./crc";
+import CentralDirectoryListing from "./CentralDirectoryListing.js";
+import { decompressors } from "./decompressors.js";
+import crc32 from "./crc32.js";
 
-export class ArchiveFile {
+export default class ArchiveFile {
 	fileName: string;
 
 	constructor(
@@ -22,26 +22,22 @@ export class ArchiveFile {
 		);
 
 		if (typeof decompressor !== "function") {
-			throw new Error(`Unsupported compressionMethod ${compressionMethod}`);
+			throw new Error(`unsupported compression method ${compressionMethod}`);
 		}
 
 		const uncompressedData = await decompressor(compressedData, this.cdl);
 
 		if (!(uncompressedData instanceof ArrayBuffer)) {
-			throw new Error(`Invalid result from decompressor ${compressionMethod}`);
+			throw new Error(`invalid result from decompressor ${compressionMethod}`);
 		}
 
-		assert.strictEqual(
-			this.cdl.uncompressedSize,
-			uncompressedData.byteLength,
-			`Incorrect length for file ${this.fileName}`,
-		);
+		if (uncompressedData.byteLength !== this.cdl.uncompressedSize) {
+			throw new Error(`incorrect size for file ${this.fileName}`);
+		}
 
-		assert.strictEqual(
-			this.cdl.crc32,
-			crc32(uncompressedData),
-			`Incorrect crc for file ${this.fileName}`,
-		);
+		if (crc32(uncompressedData) !== this.cdl.crc32) {
+			throw new Error(`incorrect checksum for file ${this.fileName}`);
+		}
 
 		return uncompressedData;
 	}

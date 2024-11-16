@@ -1,13 +1,36 @@
 {
-	"extends": "@mckayla/tsconfig",
 	"compilerOptions": {
-		"outDir": "./build/",
-		"target": "es2018",
-		"types": ["node"]
+		"baseUrl": ".",
+		"declaration": true,
+		"exactOptionalPropertyTypes": false,
+		"forceConsistentCasingInFileNames": true,
+		"incremental": true,
+		"isolatedModules": true,
+		"module": "node16",
+		"moduleResolution": "node16",
+		"noEmitOnError": false,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
+		"noImplicitOverride": false,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": false,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"outDir": "build/",
+		"preserveWatchOutput": true,
+		"sourceMap": true,
+		"strict": true,
+		"target": "esnext",
+		"types": ["node"],
+		"useDefineForClassFields": true,
+		"useUnknownInCatchVariables": true,
+		"verbatimModuleSyntax": true
 	},
 	"include": ["./src/**/*"],
 	"typedocOptions": {
-		"entryPoints": ["./src/unzzz.ts"],
-		"out": "./doc/"
+		"entryPoints": ["./src/index.ts"],
+		"out": "doc/"
 	}
 }

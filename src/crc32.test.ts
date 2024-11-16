@@ -1,5 +1,5 @@
-/// <reference types="jest" />
-import { crc32 } from "./crc";
+import { expect, test } from "vitest";
+import crc32 from "./crc32.js";
 
 test('crc32 of "123456789" is 0xcbf43926', () => {
 	const encoder = new TextEncoder();

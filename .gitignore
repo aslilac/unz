@@ -4,10 +4,7 @@
 .nova/
 .vscode/
 build/
-dist/
 doc/
 node_modules/
-target/
 *.log
-*.pyc
 *.tsbuildinfo

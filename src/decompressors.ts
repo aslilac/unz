@@ -1,5 +1,5 @@
-import { inflate } from "../base";
-import { CentralDirectoryListing } from "./cdl";
+import CentralDirectoryListing from "./CentralDirectoryListing.js";
+import { inflate } from "./deflate.js";
 
 /**
  * **Notice:** Not to be used for directly decompressing archives. For that, use

@@ -4,7 +4,7 @@
 	"author": "McKayla Washburn <mckayla@hey.com>",
 	"description": "A ZIP archive reader built with native web APIs",
 	"license": "MPL-2.0",
-	"homepage": "https://github.com/aslilac/unz",
+	"homepage": "https://mckay.la/unz",
 	"repository": "https://github.com/aslilac/unz",
 	"bugs": "https://github.com/aslilac/unz/issues",
 	"type": "module",

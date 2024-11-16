@@ -1,5 +1,5 @@
-import * as fs from "fs/promises";
-import * as path from "path";
+import * as fs from "node:fs/promises";
+import * as path from "node:path";
 import { expect, test } from "vitest";
 import Archive from "./Archive.js";
 
@@ -15,9 +15,15 @@ test.each(exampleArchives)(
 		const archive = new Archive(buffer);
 		const names = [...archive.files()].map((it) => it.fileName);
 		expect(names).toMatchSnapshot();
-		const sizes = (
-			await Promise.all([...archive.files()].map((it) => it.arrayBuffer()))
-		).map((it) => it.byteLength);
-		expect(sizes).toMatchSnapshot();
+		const actualSizes = await Promise.all(
+			[...archive.files()].map((it) =>
+				it.arrayBuffer().then((it) => it.byteLength),
+			),
+		);
+		expect(actualSizes).toMatchSnapshot();
+		const sizes = [...archive.files()].map((it) => it.byteLength);
+		expect(sizes).toEqual(actualSizes);
+		const timestamps = [...archive.files()].map((it) => it.lastModified);
+		expect(timestamps).toMatchSnapshot();
 	},
 );

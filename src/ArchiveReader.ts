@@ -1,3 +1,5 @@
+const decoder = new TextDecoder();
+
 export default class ArchiveReader {
 	readonly #buffer: ArrayBuffer;
 	#position: number;
@@ -62,7 +64,7 @@ export default class ArchiveReader {
 
 		for (let i = 0; i < data.length; i++) {
 			if (view[i] !== data[i]) {
-				throw new Error(`Unexpected data at ${this.position}`);
+				throw new Error(`unexpected data at 0x${this.position.toString(16)}`);
 			}
 		}
 
@@ -102,7 +104,6 @@ export default class ArchiveReader {
 	}
 
 	readString(length: number): string {
-		const decoder = new TextDecoder();
 		const data = new Uint8Array(this.#buffer, this.position, length);
 		this.position += length;
 		return decoder.decode(data);

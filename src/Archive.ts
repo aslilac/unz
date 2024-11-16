@@ -3,6 +3,11 @@ import ArchiveReader from "./ArchiveReader.js";
 import CentralDirectoryListing from "./CentralDirectoryListing.js";
 import EndOfCentralDirectory from "./EndOfCentralDirectory.js";
 
+/**
+ * Archive represents a successfully parsed ZIP file, and allows you to read
+ * files from it.
+ * @hideconstructor
+ */
 export default class Archive {
 	readonly #files: Map<string, ArchiveFile> = new Map();
 

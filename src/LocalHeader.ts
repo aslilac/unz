@@ -3,24 +3,22 @@ import LocalHeaderDescriptor from "./LocalHeaderDescriptor.js";
 const LOCAL_HEADER = new Uint8Array([0x50, 0x4b, 0x03, 0x04]);
 
 export default class LocalHeader {
-	signature: Uint8Array;
-	versionNeeded: number;
-	bitFlag: number;
-	compressionMethod: number;
-	modifiedTime: number;
-	modifiedDate: number;
-	crc32: number;
-	compressedSize: number;
-	uncompressedSize: number;
-	fileNameLength: number;
-	extraLength: number;
-	fileName: string;
-	extra: Uint8Array;
-
-	startOfCompressedFile: number;
-	endOfCompressedFile: number;
-
-	descriptor?: LocalHeaderDescriptor;
+	readonly signature: Uint8Array;
+	readonly versionNeeded: number;
+	readonly bitFlag: number;
+	readonly compressionMethod: number;
+	readonly modifiedTime: number;
+	readonly modifiedDate: number;
+	readonly crc32: number;
+	readonly compressedSize: number;
+	readonly uncompressedSize: number;
+	readonly fileNameLength: number;
+	readonly extraLength: number;
+	readonly fileName: string;
+	readonly extra: Uint8Array;
+	readonly startOfCompressedFile: number;
+	readonly endOfCompressedFile: number;
+	readonly descriptor?: LocalHeaderDescriptor;
 
 	constructor(reader: ArchiveReader, compressedDataSize: number) {
 		this.signature = reader.expect(LOCAL_HEADER);

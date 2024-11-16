@@ -8,15 +8,15 @@ const END_OF_CENTRAL_DIRECTORY_HEADER = new Uint8Array([
  * everything else is located.
  */
 export default class EndOfCentralDirectory {
-	signature: Uint8Array;
-	diskNumber: number;
-	centralDirectoryStartDisk: number;
-	localListingCount: number;
-	globalListingCount: number;
-	sizeOfCentralDirectory: number;
-	startOfCentralDirectory: number;
-	commentLength: number;
-	comment: Uint8Array;
+	readonly signature: Uint8Array;
+	readonly diskNumber: number;
+	readonly centralDirectoryStartDisk: number;
+	readonly localListingCount: number;
+	readonly globalListingCount: number;
+	readonly sizeOfCentralDirectory: number;
+	readonly startOfCentralDirectory: number;
+	readonly commentLength: number;
+	readonly comment: Uint8Array;
 
 	constructor(reader: ArchiveReader) {
 		reader.findNext(END_OF_CENTRAL_DIRECTORY_HEADER);

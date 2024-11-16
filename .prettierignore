@@ -1,11 +1,12 @@
 .DS_Store
 .env*
 build/
+coverage/
 dist/
 doc/
 node_modules/
-Pipfile.lock
-target/
+package-lock.json
+LICENCE*
+LICENSE*
 *.log
-*.pyc
 *.tsbuildinfo

@@ -4,29 +4,32 @@ const CENTRAL_DIRECTORY_LISTING_HEADER = new Uint8Array([
 	0x50, 0x4b, 0x01, 0x02,
 ]);
 
+/**
+ * Describes a file stored in the archive.
+ * @hideconstructor
+ */
 export default class CentralDirectoryListing {
-	signature: Uint8Array;
-	versionMadeBy: number;
-	versionNeeded: number;
-	bitFlag: number;
-	compressionMethod: number;
-	modifiedTime: number;
-	modifiedDate: number;
-	crc32: number;
-	compressedSize: number;
-	uncompressedSize: number;
-	fileNameLength: number;
-	extraLength: number;
-	commentLength: number;
-	fileDisk: number;
-	internalAttributes: number;
-	externalAttributes: number;
-	fileHeaderOffset: number;
-	fileName: string;
-	extra: Uint8Array;
-	comment: Uint8Array;
-
-	localHeader: LocalHeader;
+	readonly signature: Uint8Array;
+	readonly versionMadeBy: number;
+	readonly versionNeeded: number;
+	readonly bitFlag: number;
+	readonly compressionMethod: number;
+	readonly modifiedTime: number;
+	readonly modifiedDate: number;
+	readonly crc32: number;
+	readonly compressedSize: number;
+	readonly uncompressedSize: number;
+	readonly fileNameLength: number;
+	readonly extraLength: number;
+	readonly commentLength: number;
+	readonly fileDisk: number;
+	readonly internalAttributes: number;
+	readonly externalAttributes: number;
+	readonly fileHeaderOffset: number;
+	readonly fileName: string;
+	readonly extra: Uint8Array;
+	readonly comment: Uint8Array;
+	readonly localHeader: LocalHeader;
 
 	constructor(reader: ArchiveReader) {
 		this.signature = reader.expect(CENTRAL_DIRECTORY_LISTING_HEADER);

@@ -23,7 +23,9 @@ test.each(exampleArchives)(
 		expect(actualSizes).toMatchSnapshot();
 		const sizes = [...archive.files()].map((it) => it.byteLength);
 		expect(sizes).toEqual(actualSizes);
-		const timestamps = [...archive.files()].map((it) => it.lastModified);
+		const timestamps = [...archive.files()].map((it) =>
+			it.lastModified.toLocaleString(),
+		);
 		expect(timestamps).toMatchSnapshot();
 	},
 );

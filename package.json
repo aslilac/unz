@@ -2,7 +2,7 @@
 	"name": "unz",
 	"version": "1.1.0",
 	"author": "McKayla Washburn <mckayla@hey.com>",
-	"description": "A ZIP archive reader built with native web APIs",
+	"description": "A lightweight and portable library for reading ZIP archives",
 	"license": "MPL-2.0",
 	"homepage": "https://mckay.la/unz",
 	"repository": "https://github.com/aslilac/unz",
@@ -16,9 +16,7 @@
 			"types": "./build/index.d.ts"
 		}
 	},
-	"files": [
-		"build/**"
-	],
+	"files": ["build/**"],
 	"devDependencies": {
 		"@types/node": "^22.9.0",
 		"prettier": "~3.3.3",
